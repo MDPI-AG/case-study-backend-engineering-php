@@ -38,18 +38,11 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Create working directory
 WORKDIR /var/www/html
 
-# Copy the entire project
-COPY . .
-
-# Install PHP dependencies via Composer
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Set permissions (dev setup — adjust for production as needed)
-RUN chown -R www-data:www-data /var/www/html/var /var/www/html/vendor \
-    && chmod -R 755 /var/www/html
+# Copy entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Expose port for Symfony
 EXPOSE 8000
 
-# Start the Symfony app using the built-in server
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
