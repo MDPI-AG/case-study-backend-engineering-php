@@ -59,6 +59,15 @@ composer install
 php bin/console list
 ```
 
+## Allowed Tools
+
+You can use any tools you like (includ GitHub Copilot, ChatGPT, a proper IDE like PhpStorm / VS Code etc.) to
+complete the case study. During the technical interview, you will be asked to explain your code and the decisions
+you made.
+
+We recommend spending no more than 2-3 hours on this case study, as it is meant to be a quick evaluation of
+your skills.
+
 ---
 
 ## 📝 Tasks: Build a REST API for Managing "Books"
