@@ -2,7 +2,7 @@
 
 ---
 
-⚠️ PLEASE DO NOT FORK THIS REPO AS OTHERS MAY SEE YOUR CODE. INSTEAD YOU CAN SHOULD
+⚠️ PLEASE DO NOT FORK THIS REPO AS OTHERS MAY SEE YOUR CODE. INSTEAD YOU SHOULD
 [USE THIS TEMPLATE](https://github.com/new?template_name=case-study-backend-engineering-php&template_owner=MDPI-AG)
 TO CREATE YOUR OWN REPOSITORY.
 
@@ -61,7 +61,7 @@ php bin/console list
 
 ---
 
-# 📝 Case Study Task: Build a REST API for Managing "Books"
+## 📝 Tasks: Build a REST API for Managing "Books"
 
 ### Context
 
