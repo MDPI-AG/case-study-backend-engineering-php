@@ -35,6 +35,11 @@ This will start the Dockerized stack, which includes:
 - A MySQL 8.0 database server
 - A PHPMyAdmin interface for managing the MySQL database via a GUI, accessible at [http://localhost:8080](http://localhost:8080)
 
+To sign in to PHPMyAdmin, use the following credentials (we know this ain't secure, but it's just a case study!):
+
+- **Username:** `root`
+- **Password:** `root`
+
 The application sources are volume-mounted into the PHP container under `/var/www/html` in the container.
 
 To follow the logs from the Docker stack, you can use:
