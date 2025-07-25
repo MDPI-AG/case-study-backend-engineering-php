@@ -38,18 +38,18 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Create working directory
 WORKDIR /var/www/html
 
-# Copy existing application directory contents
+# Copy the entire project
 COPY . .
 
-# Set permissions (for dev environments; use better strategies for prod)
+# Install PHP dependencies via Composer
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Set permissions (dev setup — adjust for production as needed)
 RUN chown -R www-data:www-data /var/www/html/var /var/www/html/vendor \
     && chmod -R 755 /var/www/html
 
-# Optional: Symfony CLI (useful for local dev)
-# RUN curl -sS https://get.symfony.com/cli/installer | bash && mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
-
-# Expose port if using PHP's built-in server
+# Expose port for Symfony
 EXPOSE 8000
 
-# Default command (you can override in docker-compose)
+# Start the Symfony app using the built-in server
 CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
