@@ -111,6 +111,11 @@ Build these endpoints for the Book resource:
 | PUT         | /api/books/{id} | Update an existing book | JSON updated book data | JSON updated book            |
 | DELETE      | /api/books/{id} | Delete a book           | None                   | HTTP 204 No Content          |
 
+**Design instructions for the API controllers:**
+Please stick to good RESTful practices, including proper HTTP status codes and response formats. Additionally, the
+controllers should handle errors gracefully and return appropriate HTTP status codes for error conditions. Finally,
+any business logic should be encapsulated in services or repositories, not directly in the controllers.
+
 #### 4. Data Validation
 
 - Validate required fields (title, author).
