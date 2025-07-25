@@ -149,4 +149,4 @@ The updated Symfony app source code with:
 - Add pagination on the GET /api/books endpoint.
 - Add filters (e.g., search by author or title).
 - Add OpenAPI/Swagger documentation for the API.
-- Unit test coverage for the API endpoints with PHPUnit.
+- Unit test coverage and application tests for the API endpoints with PHPUnit / WebTestCase.
