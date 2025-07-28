@@ -79,23 +79,33 @@ your skills with Symfony, API design, entity modeling, and basic authentication.
 
 ### Task Description
 
-#### 1. Entity: Book
+#### 1. Entities: Book and Author
 
-Create a Book entity with the following properties using Doctrine ORM:
+There is a basic Book entity which is using Doctrine ORM. First, update the database schema so that the Book entity
+is actually created in the MySQL database. Then you can import the sample data from `./data/book.sql` into the
+database via PHPMyAdmin (or the MySQL CLI if you log to the MySQL docker container).
 
-| Property    | Type     | Details                         |
-| ----------- | -------- | ------------------------------- |
-| id          | UUID     | Primary key, auto-generated     |
-| title       | string   | Required, max length 255        |
-| author      | string   | Required, max length 255        |
-| publishedAt | DateTime | Optional, publication date      |
-| isbn        | string   | Optional, max length 20, unique |
-| createdAt   | DateTime | Automatically set on creation   |
-| updatedAt   | DateTime | Automatically updated on change |
+Additoinally, create a new `Author` entity that has a many-to-many relationship with the Book entity. It should have
+the following props:
 
-Migrate the database schema so that the Book entity is created in the MySQL database.
+| Property  | Type   | Details                     |
+| --------- | ------ | --------------------------- |
+| id        | UUID   | Primary key, auto-generated |
+| title     | string | Required, max length 255    |
+| firstname | string | Required, max length 100    |
+| lastname  | string | Required, max length 100    |
 
-#### 2. Basic API Key Authentication
+Once you have introduced the new entity, update your database schema agian.
+
+### 2. Refactor Controller Endpoint
+
+A previous colleague that left the company has implemented a controller method for a one-time data migration.
+The engineering manager dislikes this approach for obvious reasons. Please refactor the controller method to
+use another more appropriate approach.
+
+Please be ready to explain your refactoring decisions during the technical interview.
+
+#### 3. Basic API Key Authentication
 
 Implement a simple middleware (Symfony event listener or authenticator) that requires all API requests
 to include an HTTP header `X-API-KEY` with a predefined API key. We assume here that we have only one
@@ -108,42 +118,68 @@ X-API-KEY: your_api_key_here
 
 Requests without the correct API key should return HTTP 401 Unauthorized.
 
-#### 3. Build the REST API Endpoints
+#### 4. Build the REST API Endpoints
 
 Build these endpoints for the Book resource:
 
-| HTTP Method | URL             | Description             | Request Body           | Response                     |
-| ----------- | --------------- | ----------------------- | ---------------------- | ---------------------------- |
-| GET         | /api/books      | List all books          | None                   | JSON array of books          |
-| GET         | /api/books/{id} | Get details of a book   | None                   | JSON object of book          |
-| POST        | /api/books      | Create a new book       | JSON book data         | JSON created book + HTTP 201 |
-| PUT         | /api/books/{id} | Update an existing book | JSON updated book data | JSON updated book            |
-| DELETE      | /api/books/{id} | Delete a book           | None                   | HTTP 204 No Content          |
+| HTTP Method | URL         | Description           | Request Body   | Response                     |
+| ----------- | ----------- | --------------------- | -------------- | ---------------------------- |
+| GET         | /books      | List all books        | None           | JSON array of books          |
+| GET         | /books/{id} | Get details of a book | None           | JSON object of book          |
+| POST        | /books      | Create a new book     | JSON book data | JSON created book + HTTP 201 |
+
+For the POST request, the JSON body should include the following fields:
+
+```json
+{
+  "title": "Book Title",
+  "author": {
+    "firstname": "Author Firstname",
+    "lastname": "Author Lastname"
+  },
+  "published": "2023-01-01",
+  "isbn": "1234567890"
+}
+```
+
+Make sure the same authors and same books are not created multiple times. If an author already exists,
+you should use that existing author instead of creating a new one.
+
+Some best practices to follow:
+
+- error handling, i.e., expect wrong input or services that fail
+- return appropriate HTTP status codes (e.g., 201 for created, 404 for not found, 400 for bad request, etc.)
+- use Symfony Serializer to convert entities to JSON
+- avoid any business logic in the controllers; use services or repositories instead - as appropriate
 
 **Design instructions for the API controllers:**
 Please stick to good RESTful practices, including proper HTTP status codes and response formats. Additionally, the
 controllers should handle errors gracefully and return appropriate HTTP status codes for error conditions. Finally,
 any business logic should be encapsulated in services or repositories, not directly in the controllers.
 
-#### 4. Data Validation
+#### 5. Data Validation
 
 - Validate required fields (title, author).
 - Validate the ISBN is unique if provided.
 - Validate the max lengths on strings.
 
-#### 5. Deliverables
+#### 6. Deliverables
 
-The updated Symfony app source code with:
+Please commit your changes to your repository and ensure that the code is clean, well-structured, and follows Symfony
+and other PHP best practices (e.g., PSR-12 coding standards, proper naming conventions, etc.). Make sure we can access
+your repository (add the `rordi` GitHub user as a collaborator).
 
-- Book entity and Doctrine mappings
+Your updated Symfony app source code should include:
+
+- Book and Author entities with their Doctrine mappings
 - Repository class or service if needed
 - API Controllers and routes
 - API Key authentication mechanism
-- Validation rules
-- Instructions on how to test the API (e.g., example curl commands)
+- Validation logic
+- Instructions on how to test the API (e.g., example curl commands, or OpenAPI/Swagger documentation if implemented)
 - Basic test cases (optional, but a plus)
 
-#### 6. Bonus (optional)
+#### 7. Bonus (optional)
 
 - Use Symfony Serializer groups to customize JSON responses.
 - Add pagination on the GET /api/books endpoint.
