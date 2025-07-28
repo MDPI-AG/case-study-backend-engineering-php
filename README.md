@@ -182,6 +182,8 @@ as intended. Please refactor it by making deliberate decisions on how to improve
 readability, maintainability, etc. We do not expect you to implement a full search engine (like Solr, Elastic
 or OpenSearch), but rather rework the existing code base.
 
+Please be ready to explain your refactoring decisions during the technical interview.
+
 #### 7. Deliverables
 
 Please commit your changes to your repository and ensure that the code is clean, well-structured, and follows Symfony
