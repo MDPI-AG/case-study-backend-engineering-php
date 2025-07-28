@@ -11,6 +11,9 @@ TO CREATE YOUR OWN REPOSITORY.
 ## Getting Started
 
 This repository contains the skeleton of a Symfony 6.4 application that serves as the basis for the case study.
+
+> **We recommend that you spend 2-3 hours on this case study, as it is meant to be a quick evaluation of your skills. If you are not finished in that time, please submit what you have done so far, and we will evaluate your progress.**
+
 The application has been Dockerized and is ready to be used with Docker Compose. If you do not have Docker installed,
 please follow the [installation instructions](https://docs.docker.com/get-docker/) to get `Docker Desktop`.
 
@@ -97,7 +100,7 @@ the following props:
 
 Once you have introduced the new entity, update your database schema agian.
 
-### 2. Refactor Controller Endpoint
+#### 2. Refactor Controller Endpoint
 
 A previous colleague that left the company has implemented a controller method for a one-time data migration.
 The engineering manager dislikes this approach for obvious reasons. Please refactor the controller method to
@@ -106,6 +109,10 @@ use another more appropriate approach.
 Please be ready to explain your refactoring decisions during the technical interview.
 
 #### 3. Basic API Key Authentication
+
+Requests without the correct API key should return HTTP 401 Unauthorized.
+
+**_Naive Approach:_**
 
 Implement a simple middleware (Symfony event listener or authenticator) that requires all API requests
 to include an HTTP header `X-API-KEY` with a predefined API key. We assume here that we have only one
@@ -116,7 +123,11 @@ different API key per environment (development, staging, production, etc.).
 X-API-KEY: your_api_key_here
 ```
 
-Requests without the correct API key should return HTTP 401 Unauthorized.
+**_Advanced Approach:_**
+
+You are free to implement a more advanced API key authentication mechanism, such as using a database table
+to store clients and/or API keys, allowing for multiple clients, or implementing a more secure authentication
+method like JWT (JSON Web Tokens) etc.
 
 #### 4. Build some basic REST API Endpoints
 
@@ -181,7 +192,8 @@ Your updated Symfony app source code should include:
 
 #### 7. Bonus (optional)
 
-- Use Symfony Serializer groups to customize JSON responses.
+- Advanced API Key authentication with a database table for clients and/or API keys.
+- Use Symfony Serializer to customize JSON responses.
 - Add pagination on the GET /api/books endpoint.
 - Add filters (e.g., search by author or title).
 - Add OpenAPI/Swagger documentation for the API.
