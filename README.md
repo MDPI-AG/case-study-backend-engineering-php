@@ -116,8 +116,7 @@ Requests without the correct API key should return HTTP 401 Unauthorized.
 
 Implement a simple middleware (Symfony event listener or authenticator) that requires all API requests
 to include an HTTP header `X-API-KEY` with a predefined API key. We assume here that we have only one
-API client, so we can hardcode the API key in the configuration so that -- at least -- we can use a
-different API key per environment (development, staging, production, etc.).
+API client, i.e., only one API key.
 
 ```
 X-API-KEY: your_api_key_here
