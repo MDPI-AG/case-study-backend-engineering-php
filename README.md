@@ -118,7 +118,7 @@ X-API-KEY: your_api_key_here
 
 Requests without the correct API key should return HTTP 401 Unauthorized.
 
-#### 4. Build the REST API Endpoints
+#### 4. Build some basic REST API Endpoints
 
 Build these endpoints for the Book resource:
 
@@ -147,21 +147,21 @@ you should use that existing author instead of creating a new one.
 
 Some best practices to follow:
 
+- stick to good RESTful practices
 - error handling, i.e., expect wrong input or services that fail
 - return appropriate HTTP status codes (e.g., 201 for created, 404 for not found, 400 for bad request, etc.)
 - use Symfony Serializer to convert entities to JSON
 - avoid any business logic in the controllers; use services or repositories instead - as appropriate
 
-**Design instructions for the API controllers:**
-Please stick to good RESTful practices, including proper HTTP status codes and response formats. Additionally, the
-controllers should handle errors gracefully and return appropriate HTTP status codes for error conditions. Finally,
-any business logic should be encapsulated in services or repositories, not directly in the controllers.
-
 #### 5. Data Validation
 
-- Validate required fields (title, author).
-- Validate the ISBN is unique if provided.
-- Validate the max lengths on strings.
+Add data validation to your API endpoints using Symfony Validator component. The validation should include:
+
+- Validate required fields
+- Validate that are supposed to be unique fields
+- Validate the max lengths on strings
+- Validate authorship (e.g., author is given, and author must have a first and last name).
+- Validate dates
 
 #### 6. Deliverables
 
