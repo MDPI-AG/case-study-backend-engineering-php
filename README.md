@@ -174,7 +174,15 @@ Add data validation to your API endpoints using Symfony Validator component. The
 - Validate authorship (e.g., author is given, and author must have a first and last name).
 - Validate dates
 
-#### 6. Deliverables
+#### 6. Refactor `SearchController`
+
+The `SearchController` is a simple controller that allows searching for books by title or author passed via
+the GET `q` param and basic sorting passed via the GET `sort`param. The controller is a mess and may not work
+as intended. Please refactor it by making deliberate decisions on how to improve the code quality, scoping,
+readability, maintainability, etc. We do not expect you to implement a full search engine (like Solr, Elastic
+or OpenSearch), but rather rework the existing code base.
+
+#### 7. Deliverables
 
 Please commit your changes to your repository and ensure that the code is clean, well-structured, and follows Symfony
 and other PHP best practices (e.g., PSR-12 coding standards, proper naming conventions, etc.). Make sure we can access
@@ -190,7 +198,7 @@ Your updated Symfony app source code should include:
 - Instructions on how to test the API (e.g., example curl commands, or OpenAPI/Swagger documentation if implemented)
 - Basic test cases (optional, but a plus)
 
-#### 7. Bonus (optional)
+#### Bonus (optional)
 
 - Advanced API Key authentication with a database table for clients and/or API keys.
 - Use Symfony Serializer to customize JSON responses.

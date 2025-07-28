@@ -16,26 +16,28 @@ class Book
     #[ORM\Column(type: 'uuid', unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
-    #[Groups(['book_list'])]
+    #[Groups(['book_list', 'search'])]
     private ?Uuid $id = null;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
     #[Assert\Length(max: 255)]
-    #[Groups(['book_list'])]
+    #[Groups(['book_list', 'search'])]
     private string $title;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
     #[Assert\Length(max: 255)]
+    #[Groups(['search'])]
     private string $author;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    #[Groups(['book_list'])]
+    #[Groups(['book_list', 'search'])]
     private ?\DateTimeInterface $publishedAt = null;
 
     #[ORM\Column(type: 'string', length: 20, unique: true, nullable: true)]
     #[Assert\Length(max: 20)]
+    #[Groups(['book_list', 'search'])]
     private ?string $isbn = null;
 
     #[ORM\Column(type: 'datetime')]
