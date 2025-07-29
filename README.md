@@ -177,9 +177,9 @@ Add data validation to your API endpoints using Symfony Validator component. The
 
 The `SearchController` is a simple controller that allows searching for books by title or author passed via
 the GET `q` param and basic sorting passed via the GET `sort`param. The controller is a mess and may not work
-as intended. Please refactor it by making deliberate decisions on how to improve the code quality, scoping,
-readability, maintainability, scaling, etc. We do not expect you to implement a full search engine (like Solr, Elastic
-or OpenSearch), but rather rework the existing code base.
+as intended. Please refactor it by making deliberate decisions on how to improve the functionality, code quality,
+scoping, readability, maintainability, scaling, etc. We do not expect you to implement a full search engine (like
+Solr, Elastic or OpenSearch), but rather rework the existing code base.
 
 Please be ready to explain your refactoring decisions during the technical interview.
 
