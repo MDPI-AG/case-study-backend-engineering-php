@@ -143,10 +143,10 @@ For the POST request, the JSON body should include the following fields:
 ```json
 {
   "title": "Book Title",
-  "author": {
+  "authors": [{
     "firstname": "Author Firstname",
     "lastname": "Author Lastname"
-  },
+  }],
   "published": "2023-01-01",
   "isbn": "1234567890"
 }
@@ -168,9 +168,9 @@ Some best practices to follow:
 Add data validation to your API endpoints using Symfony Validator component. The validation should include:
 
 - Validate required fields
-- Validate that are supposed to be unique fields
-- Validate the max lengths on strings
-- Validate authorship (e.g., author is given, and author must have a first and last name).
+- Validate fields that are supposed to be unique fields
+- Validate the max lengths for strings
+- Validate authorships (e.g., author is given, and author must have a first and last name).
 - Validate dates
 
 #### 6. Refactor `SearchController`
@@ -178,7 +178,7 @@ Add data validation to your API endpoints using Symfony Validator component. The
 The `SearchController` is a simple controller that allows searching for books by title or author passed via
 the GET `q` param and basic sorting passed via the GET `sort`param. The controller is a mess and may not work
 as intended. Please refactor it by making deliberate decisions on how to improve the code quality, scoping,
-readability, maintainability, etc. We do not expect you to implement a full search engine (like Solr, Elastic
+readability, maintainability, scaling, etc. We do not expect you to implement a full search engine (like Solr, Elastic
 or OpenSearch), but rather rework the existing code base.
 
 Please be ready to explain your refactoring decisions during the technical interview.
