@@ -202,8 +202,6 @@ Your updated Symfony app source code should include:
 #### Bonus (optional)
 
 - Advanced API Key authentication with a database table for clients and/or API keys.
-- Use Symfony Serializer to customize JSON responses.
 - Add pagination on the GET /api/books endpoint.
-- Add filters (e.g., search by author or title).
 - Add OpenAPI/Swagger documentation for the API.
 - Unit test coverage and application tests for the API endpoints with PHPUnit / WebTestCase.
