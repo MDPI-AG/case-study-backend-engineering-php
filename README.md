@@ -107,7 +107,8 @@ The engineering manager dislikes this approach for obvious reasons (he does not 
 controller). Please refactor the controller method to use another more appropriate approach (command, service. etc.).
 
 Bear in mind that the example data is relatively small, but in a production context, the database could contain
-millions of records for books. Please consider this in the design.
+millions of records for books -- please consider this fact in the design. Also, you need to slightly rewrite the
+logic to account for the new `Author` entity.
 
 Please be ready to explain your refactoring decisions during the technical interview.
 
