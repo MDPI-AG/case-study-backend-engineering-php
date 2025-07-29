@@ -103,8 +103,11 @@ Once you have introduced the new entity, update your database schema agian.
 #### 2. Refactor Controller Endpoint
 
 A previous colleague that left the company has implemented a controller method for a one-time data migration.
-The engineering manager dislikes this approach for obvious reasons. Please refactor the controller method to
-use another more appropriate approach.
+The engineering manager dislikes this approach for obvious reasons (he does not like this to be exposed in an API
+controller). Please refactor the controller method to use another more appropriate approach (command, service. etc.).
+
+Bear in mind that the example data is relatively small, but in a production context, the database could contain
+millions of records for books. Please consider this in the design.
 
 Please be ready to explain your refactoring decisions during the technical interview.
 
