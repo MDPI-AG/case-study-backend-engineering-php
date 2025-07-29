@@ -94,7 +94,7 @@ the following props:
 | Property  | Type   | Details                     |
 | --------- | ------ | --------------------------- |
 | id        | UUID   | Primary key, auto-generated |
-| title     | string | Required, max length 255    |
+| title     | string | Required, max length 10    |
 | firstname | string | Required, max length 100    |
 | lastname  | string | Required, max length 100    |
 
